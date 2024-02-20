@@ -15,8 +15,9 @@
   text-align: center;
   color: white;
   position: absolute;
-  left: 100px;
-  top: 15px;
+  left: 125px;
+  top: 25px;
+  display: inline-block;
 }
 .dc{
   position: absolute;
@@ -26,17 +27,16 @@
 }
 .dcname{
   position: absolute;
-  right: 10%;
+  right: 7%;
   top: 18px;
   color: white;
 }
 .dcname1{
   position: absolute;
-  right: 9%;
+  right: 6.5%;
   top: 40px;
   color: white;
   
-
 }
 .logo{
   position: absolute;
@@ -49,6 +49,19 @@
   background-color: whitesmoke;
   padding: 10px;
   left : 20px;
+}
+
+.slotBook{
+  background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    /* margin: 8px 0; */
+    border: none;
+    cursor: pointer;
+    width: 12%;
+    border-radius: 20px;
+    margin-left: 15%;
+    margin-top: 30px;
 }
 
 .nav a {
@@ -117,14 +130,35 @@ nav a:hover, .dropdown:hover .dropbtn {
 }
 .table{
   border-collapse: collapse;
-  width :80%;
-  margin-left: 120px;
+  width :85%;
+  margin-left: 100px;
   margin-top: 100px;
   justify-self:center;
+  border: 1px solid black;
 }
 .h3{
-  text-align: center;
+  /* text-align: center; */
   margin-top: 50px;
+  margin-left: 30%;
   color: darkred;
+}
+
+th, td,tr {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+  width: 20%;
+  border-collapse: collapse;
+}
+
+.renderItemTable {
+  margin-left: 100px;
+  margin-top:30px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.thParticipents{
+  width: 40px;
 }
 

@@ -1,0 +1,63 @@
+.BookYourSlotContainer {
+    background-color: aliceblue;
+    margin:50px
+}
+
+label {
+    display: block;
+    width: 15em;
+    margin-right: 0.5rem;
+    padding-top: 1.5em;
+    text-align:center;
+}
+
+select, input {
+    /* display: inline-block; */
+    width: 10em;
+}
+
+.row1Container{
+    display: flex;
+    margin:2px auto;
+    margin-left: 150px;
+    margin-top: 20px;
+}
+
+.row2Container {
+    display: flex;
+    margin:2px auto;
+    margin-left: 140px;
+}
+
+.row3Container {
+    display: flex;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.datePicker, .startTime,.endTime,.Department,.location,.subject{
+    margin-left: 40px;
+}
+
+.Dept {
+    width: 17em;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.loca {
+    width: 17em;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.subject {
+    width: 12em;
+    height: 30px;
+    border-radius: 20px;
+}
+
+.submitButton {
+    margin:20px auto;
+    margin-left: 500px;
+}

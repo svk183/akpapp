@@ -1,0 +1,59 @@
+.loginContainer{
+    width: 600px;
+    height: 400px;
+    background-color: lavender;
+    border-radius: 10px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.usernameContainer{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    height: 30px;
+    width: 70%; 
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+.passwordContainer{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    height: 30px;
+    width: 70%; 
+    padding: 20px;
+    border-radius: 15px;
+}
+
+input[type=text], input[type=password] {
+    width: 110%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 20px;
+  }
+
+  .submit{
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    /* margin: 8px 0; */
+    border: none;
+    cursor: pointer;
+    width: 70%;
+    border-radius: 20px;
+    margin-left: 100px;
+    margin-top: 30px;
+
+  }
