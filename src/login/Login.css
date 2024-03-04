@@ -1,7 +1,6 @@
 .loginContainer{
-    width: 600px;
+    width: 400px;
     height: 400px;
-    background-color: lavender;
     border-radius: 10px;
     margin: auto;
     position: absolute;
@@ -9,37 +8,64 @@
     left: 0;
     right: 0;
     bottom: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.LoginContainer {
+    flex: 1;
+    background-color: black;
 }
 
 .usernameContainer{
-    margin: auto;
+    /* margin: auto; */
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;   
     height: 30px;
-    width: 70%; 
+    width: 80%; 
     padding: 20px;
     border-radius: 15px;
     margin-top: 50px;
+    color: white;
+    
 }
 
 .passwordContainer{
-    margin: auto;
+    /* margin: auto; */
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;   
     height: 30px;
-    width: 70%; 
+    width: 80%; 
     padding: 20px;
     border-radius: 15px;
+    color: white;
+
+}
+
+.newUserLink {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+}
+p {
+    text-align: center;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }
 
 input[type=text], input[type=password] {
-    width: 110%;
+    width: 22rem;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     box-sizing: border-box;
     border-radius: 20px;
   }
@@ -51,9 +77,9 @@ input[type=text], input[type=password] {
     /* margin: 8px 0; */
     border: none;
     cursor: pointer;
-    width: 70%;
+    width: 40%;
     border-radius: 20px;
-    margin-left: 100px;
+    margin: auto 120px;
     margin-top: 30px;
 
   }

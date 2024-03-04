@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className="nav">
-        <Link to="/home">Home</Link>
+        <Link to="/">Home</Link>
         <div className="dropdown">
           <button className="dropbtn">Dashboards</button>
           <div className="dropdown-content">
@@ -15,7 +15,23 @@ const Navbar = () => {
           </div>
         </div>
         <Link to="/contact">Contact</Link>
+        <div>
+          <button
+            style={{
+              position: "absolute",
+              right: 0,
+              borderRadius: 20,
+              padding: 10,
+              width: 90,
+              marginRight: 30,
+              backgroundColor: "#b1cf86",
+            }}
+          >
+            Log Out
+          </button>
+        </div>
       </nav>
+
       <Outlet />
     </div>
   );

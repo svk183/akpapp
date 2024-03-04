@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./Style.css";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   let navigate = useNavigate();
 
   const [username, setUsername] = useState(" ");
@@ -12,11 +12,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:8000/login", {
+    const response = await fetch("http://localhost:8000/register", {
       method: "POST",
       body: JSON.stringify({
         userName: username,
         password: password,
+        canCreate: true,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -24,11 +25,7 @@ const Login = () => {
     });
     try {
       if (response.status == 200) {
-        alert("Login Success", {});
-        const isAdmin = await response?.json();
-        navigate("/", { state: { isAdmin } });
-      } else {
-        alert("Invalid Credientails");
+        alert("Succesfully registered");
       }
     } catch (error) {
       console.log(error);
@@ -39,7 +36,7 @@ const Login = () => {
     <div style={{ backgroundColor: "black" }}>
       <div className="loginContainer">
         <h3 style={{ textAlign: "center", marginTop: 20, color: "black" }}>
-          Login
+          Register
         </h3>
         <div className="usernameContainer">
           <label>
@@ -72,9 +69,9 @@ const Login = () => {
         </button>
         <div className="newUserLink">
           <p style={{ color: "black" }}>
-            Don't Have An Account?{" "}
-            <a href="/register" style={{ color: "black" }}>
-              Sign Up
+            Already User?{" "}
+            <a href="/login" style={{ color: "black" }}>
+              Login{" "}
             </a>
           </p>
         </div>
@@ -83,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

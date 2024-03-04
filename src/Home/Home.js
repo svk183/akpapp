@@ -4,62 +4,26 @@ import dc from "../assets/dc.jpg";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import { useEffect, useState } from "react";
+import Header from "../header/Header";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const [data, setData] = useState([]);
-  console.log("data===>", data);
 
-  const dummyData = [
-    {
-      sNo: 1,
-      BookingDate: "18/2/2024",
-      Time: "2:00 PM-3:00 PM",
-      Location: "Anakapalli",
-      subject: "Medical Emergency",
-      participents: " Apparao, Ajay, Virat, andanfj, asdnjans",
-      Department: "Medical Department",
-      PhoneNumber: 9618968899,
-      status: "Approved",
-    },
-    {
-      sNo: 2,
-      BookingDate: "18/2/2024",
-      Time: "2:00 PM-3:00 PM",
-      Location: "Anakapalli",
-      subject: "Medical Emergency",
-      participents: " Apparao, Ajay, Varat",
-      Department: "Fire Department",
-      PhoneNumber: 12334345234,
-      status: "Approved",
-    },
-    {
-      sNo: 3,
-      BookingDate: "18/2/2024",
-      Time: "2:00 PM-3:00 PM",
-      Location: "Anakapalli",
-      subject: "Medical Emergency",
-      participents: " Apparao, Ajay, Virat",
-      Department: "DRO Department",
-      PhoneNumber: 123098766,
-      status: "Approved",
-    },
-    {
-      sNo: 4,
-      BookingDate: "18/2/2024",
-      Time: "2:00 PM-3:00 PM",
-      Location: "Anakapalli",
-      subject: "Medical Emergency",
-      participents: " Apparao, Ajay, Virat",
-      Department: "Medical Department",
-      PhoneNumber: 9618968899,
-      status: "Approved",
-    },
-  ];
+  const location = useLocation();
+  const admin = location?.state?.isAdmin?.isAdmin;
+  const message = location?.state?.isAdmin?.message;
+  console.log(message);
 
   const date = new Date();
-  var day = date.getDate();
+  let day = date.getDate();
   var month = date.getMonth() + 1;
   var year = date.getUTCFullYear();
+
+  if (day.toLocaleString.length <= 1 && month.toLocaleString.length <= 1) {
+    day = `0${day}`;
+    month = `0${month}`;
+  }
 
   let navigate = useNavigate();
   const navigationPage = () => {
@@ -67,46 +31,104 @@ function App() {
     navigate(path);
   };
 
+  const Appointments = async () => {
+    const response = await fetch("http://localhost:8000/appointments", {
+      credentials: "same-origin",
+    });
+    const data = await response.json();
+    const result = data?.appointments;
+    setData(result);
+    try {
+      if (response?.status == 200) {
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const pendingAppointment = () => {
+    navigate("/pending");
+  };
+
+  useEffect(() => {
+    Appointments();
+  }, []);
+
   return (
     <div className="App">
-      <header className="Anakapalli-Collectorate">
-        <h1 className="AnakapalliCollectorate">Anakapalli Collectorate</h1>
-        <img src={logo} height={70} width={80} className="logo" />
-      </header>
+      <Header />
       <Navbar />
-      <div style={{ display: "flex" }}>
-        <h3 className="h3">
-          District Level VC/Meeting Booking Status as on {day}-{month}-{year}
-        </h3>
-        <button className="slotBook" onClick={navigationPage}>
-          Book Your Slot
-        </button>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginLeft: "10%",
+          marginTop: "5%",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h3 className="h3">
+            District Level VC/Meeting Booking Status as on {day}-{month}-{year}
+          </h3>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            position: "relative",
+            left: "1%",
+            gap: 30,
+          }}
+        >
+          {admin == true && (
+            <div>
+              <button className="slotBook" onClick={pendingAppointment}>
+                Pending Appointments
+              </button>
+            </div>
+          )}
+          <div>
+            <button className="slotBook" onClick={navigationPage}>
+              Book Your Slot
+            </button>
+          </div>
+        </div>
       </div>
-      <div>
-        <table className="table">
+
+      <div style={{}}>
+        <table className="table" width="100%">
           <tr>
-            <th>S.NO</th>
+            <th className="sNo">S.NO</th>
             <th>Booking Date</th>
-            <th>Time</th>
-            <th className="thLocation">Location</th>
-            <th className="thSubject">Subject</th>
-            <th className="thParticipents">Participants</th>
-            <th className="thDepartment">Department</th>
-            <th>Phone Number</th>
+            <th className="time">Time</th>
+            <th className="location">Location</th>
+            <th className="subject">Subject</th>
+            <th className="participants">Participants</th>
+            <th>Department</th>
+            <th className="phone">Phone Number</th>
             <th>Status</th>
           </tr>
-          {dummyData.map(function (arrayItem) {
+          {data.map((arrayItem, index) => {
+            const indexNumber = index + 1;
             return (
-              <tr>
-                <th>{arrayItem.sNo}</th>
-                <th>{arrayItem.BookingDate}</th>
-                <th>{arrayItem.Time}</th>
-                <th>{arrayItem.Location}</th>
-                <th>{arrayItem.subject}</th>
-                <th className="thParticipents">{arrayItem.participents}</th>
-                <th>{arrayItem.Department}</th>
-                <th>{arrayItem.PhoneNumber}</th>
-                <th>{arrayItem.status}</th>
+              <tr style={{ fontWeight: "normal" }}>
+                <th>{indexNumber}</th>
+                <th>{arrayItem?.date}</th>
+                <th>
+                  {arrayItem?.startTime} to {arrayItem?.endTime}
+                </th>
+                <th>{arrayItem?.location}</th>
+                <th className="thParticipents">{arrayItem?.subject}</th>
+                <th>{arrayItem?.participants}</th>
+                <th>{arrayItem?.department}</th>
+                <th>{arrayItem?.phoneNumber}</th>
+                <th>{arrayItem?.status}</th>
               </tr>
             );
           })}
