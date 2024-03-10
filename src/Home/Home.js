@@ -33,7 +33,7 @@ function App() {
 
   const Appointments = async () => {
     const response = await fetch("http://localhost:8000/appointments", {
-      credentials: "same-origin",
+      credentials: "include",
     });
     const data = await response.json();
     const result = data?.appointments;
