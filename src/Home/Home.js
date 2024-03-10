@@ -1,7 +1,5 @@
 import "./App.css";
-import logo from "../assets/logo.jpg";
-import dc from "../assets/dc.jpg";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import { useEffect, useState } from "react";
 import Header from "../header/Header";
@@ -33,13 +31,13 @@ function App() {
 
   const Appointments = async () => {
     const response = await fetch("http://localhost:8000/appointments", {
-      credentials: "same-origin",
+      credentials: "include",
     });
     const data = await response.json();
     const result = data?.appointments;
     setData(result);
     try {
-      if (response?.status == 200) {
+      if (response?.status === 200) {
       }
     } catch (error) {
       console.log(error);
@@ -86,7 +84,7 @@ function App() {
             gap: 30,
           }}
         >
-          {admin == true && (
+          {admin === true && (
             <div>
               <button className="slotBook" onClick={pendingAppointment}>
                 Pending Appointments
