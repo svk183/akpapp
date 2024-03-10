@@ -14,6 +14,7 @@ const Login = () => {
     e.preventDefault();
     const response = await fetch("http://localhost:8000/login", {
       method: "POST",
+      credentials: "include",
       body: JSON.stringify({
         userName: username,
         password: password,
